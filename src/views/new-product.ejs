@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  <div>
+    <%- include('./partials/header'); %>
+    <div class="create-product-container">
+      <form action="/create" method="POST">
+          <div><b><h3>Create a new product:</h3></b></div>
+          <div>
+              <label>Name:</label> 
+              <input type="text" name="productName" />
+          </div>
+          <div>
+              <label>Description:</label>
+              <input type="text" name="description" />
+          </div>
+          <div>
+              <label>Price:</label>
+              <input type="text" name="price" />    
+          </div>
+
+          <div>
+              <button type="submit" class="btn-submit">Submit</button>
+          </div>
+
+      </form>
+
+  </div>
+  
+    
+</div>
+</body>
+</html>

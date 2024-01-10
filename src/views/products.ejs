@@ -14,11 +14,11 @@
     <div class="container">
       
       <% if(products.length === 0) { %>
-        <h4 style="text-align: center;">No product match name</h4>
+        <h4 style="text-align: center;">No product, please add some</h4>
       <% }%>
 
       <% if(products.length !== 0) { %>
-        <h2 style="margin-left: 275px; margin-right: auto;">List Search Products Table</h2>
+        <h2 style="margin-left: 275px; margin-right: auto;">List Products Table</h2>
 
         <table style="width: 800px; text-align: center; margin: 0 auto;">
           <thead>
@@ -27,6 +27,7 @@
                   <th>Product name</th>
                   <th>Description</th>
                   <th>Price</th>
+                  <th>Actions</th>
               </tr>
           </thead>
           <tbody>
@@ -46,7 +47,17 @@
                 <td>
                     <%= products[i].price %>
                 </td>
-            
+                <td rowspan="2" style="display: flex; gap: 15px; margin-left: auto; justify-content: space-evenly;">
+
+                  <form action="/<%= products[i].id %>/edit" method="GET">
+                    <button type="submit">Edit</button>
+                  </form>
+
+                  <form action="/delete" method="POST">
+                    <input type="hidden" value="<%= products[i].id %>" name="productId" />
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
               </tr>
             <% } %>
                 </tbody>

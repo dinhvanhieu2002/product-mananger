@@ -2,9 +2,16 @@ const Product = require('../models/Product');
 
 module.exports = {
   index: async (req, res) => {
+    res.render('index.ejs')
+  },
+  allProduct: async (req, res) => {
     const products = await Product.find({});
 
-    res.render('index.ejs', { products })
+    res.render('products.ejs', { products })
+  },
+  addProduct: async (req, res) => {
+
+    res.render('new-product.ejs')
   },
   create: async (req, res) => {
     try {

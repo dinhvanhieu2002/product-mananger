@@ -9,87 +9,16 @@
 </head>
 <body>
   <div>
-    <div class="create-product-container">
-      <form action="/create" method="POST">
-          <div><b><h3>Create a new product:</h3></b></div>
-          <div>
-              <label>Name:</label>
-              <input type="text" name="productName" />
-          </div>
-          <div>
-              <label>Description:</label>
-              <input type="text" name="description" />
-          </div>
-          <div>
-              <label>Price:</label>
-              <input type="text" name="price" />
-          </div>
-
-          <div>
-              <button type="submit" class="btn-submit">Submit</button>
-          </div>
-
+    <%- include('./partials/header'); %>
+  
+    <section id="search" class="search-wrap">
+      <h1>Find A Coding Gig</h1>
+      <form action="/search" class="search-form">
+        <i class="fas fa-search"></i>
+        <input placeholder="Enter name product" type="text" name="productName">
+        <input type="submit" value="Search">
       </form>
-
-  </div>
-  <div style="margin-left: 300px;">
-    <a href="/search">Move to search page</a>
-  </div>
-    <div class="container">
-      
-      <% if(products.length === 0) { %>
-        <h4 style="text-align: center;">No product, please add some</h4>
-      <% }%>
-
-      <% if(products.length !== 0) { %>
-        <h2 style="margin-left: 275px; margin-right: auto;">List Products Table</h2>
-
-        <table class="w3-table-all w3-hoverable" border="1" style="width: 800px; text-align: center; margin: 0 auto;">
-          <thead>
-              <tr class="w3-light-grey">
-                  <th>STT</th>
-                  <th>Product name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Actions</th>
-              </tr>
-          </thead>
-          <tbody>
-               
-            <% for(let i=0; i < products.length; i++) { %>
-              <tr>
-                <td>
-                    
-                    <%= i+1 %>
-                </td>
-                <td>
-                    <%= products[i].productName %>
-                </td>
-                <td>
-                    <%= products[i].description %>
-                </td>
-                <td>
-                    <%= products[i].price %>
-                </td>
-                <td rowspan="2" style="display: flex; gap: 15px; margin-left: auto; justify-content: space-evenly;">
-
-                  <form action="/<%= products[i].id %>/edit" method="GET">
-                    <button type="submit">Edit</button>
-                  </form>
-
-                  <form action="/delete" method="POST">
-                    <input type="hidden" value="<%= products[i].id %>" name="productId" />
-                    <button type="submit">Delete</button>
-                  </form>
-                </td>
-              </tr>
-            <% } %>
-                </tbody>
-            
-        </table>
-        <% }%>
-    </div>
-    
+    </section>
 </div>
 </body>
 </html>
