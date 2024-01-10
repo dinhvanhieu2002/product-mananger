@@ -18,7 +18,7 @@ module.exports = {
       const product = new Product(req.body);
       await product.save();
 
-      res.redirect('/')
+      res.redirect('/all-product')
     } catch (error) {
       console.log(error.message)
     }
@@ -32,7 +32,7 @@ module.exports = {
     product.price = price;
     await product.save();
 
-    res.redirect('/')
+    res.redirect('/all-product')
 
   },
   edit: async (req, res ) => {
@@ -52,12 +52,12 @@ module.exports = {
     }
 
 
-    res.redirect('/');
+    res.redirect('/all-product');
 
   },
   search: async (req, res) => {
     const { productName } = req.query;
-
+    
     const products = await Product.find({
       productName: new RegExp(".*" + productName + ".*"),
     });
